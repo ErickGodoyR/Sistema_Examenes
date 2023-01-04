@@ -22,11 +22,13 @@
                         <input [(ngModel)]="user.password" name="password"
                          type="password" matInput placeholder="Digite su password" 
                          required #password = "ngModel">
+                        <!--
                          <div class="alert alert-danger" *ngIf= "password.invalid && password.dirty || password.touched">       
                             <div *ngIf= "password.errors.required">
                                <h4>Debe ingresar su password</h4>
                             </div>                            
                         </div>
+                        -->
                     </mat-form-field>
 
                     <mat-form-field class="full-width" appearance="outline">
@@ -55,7 +57,7 @@
 
                     <div class="container text-center">
                         <button mat-raised-button color="accent" [disabled]= "!empleadoForm.form.valid">REGISTRAR</button>
-                        <button mat-raised-button color="primary" style="margin-left: 20px;">LIMPIAR</button>
+                        <button type="reset" mat-raised-button color="primary" style="margin-left: 20px;">LIMPIAR</button>
                     </div>
                 </form>
             </div>

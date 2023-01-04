@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit{
   formSubmit(){
     console.log(this.user);
     if(this.user.username == '' || this.user.username == null){
-      this.snack.open('Debe ingresar nombre de usuario!!','ACEPTAR',{
+      this.snack.open('Debe ingresar nombre de usuario!!','Aceptar',{
         duration: 3000,
         verticalPosition: 'top',
         horizontalPosition: 'right'
