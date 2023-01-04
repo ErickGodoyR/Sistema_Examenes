@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.sistema.examenes.servicios.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
+@CrossOrigin("*")
 public class UsuarioController {
 
 	@Autowired
@@ -26,7 +28,8 @@ public class UsuarioController {
 	
 	@PostMapping("/")
 	public Usuario guardarUsuario(@RequestBody Usuario usuario) throws Exception {
-		Set<UsuarioRol> roles = new HashSet();
+		usuario.setPerfil("default.png");
+		Set<UsuarioRol> usuarioRoles = new HashSet();
 		
 		Rol rol = new Rol();
 		rol.setRolId(2L);
@@ -36,7 +39,8 @@ public class UsuarioController {
 		usuarioRol.setUsuario(usuario);
 		usuarioRol.setRol(rol);
 		
-		return usuarioService.guardarUsuario(usuario, roles);
+		usuarioRoles.add(usuarioRol);
+		return usuarioService.guardarUsuario(usuario, usuarioRoles);
 	}
 	
 	

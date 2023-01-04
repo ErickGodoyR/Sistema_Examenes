@@ -1,0 +1,66 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img src="../../../assets/follow.png" height="100" width="100">
+                
+
+                <h1 class="text-center">Registrate aquí</h1>
+
+                <form (ngSubmit)="formSubmit()" #empleadoForm = "ngForm">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Nombre de usuario :</mat-label>
+                        <input  [(ngModel)]="user.username"
+                         name="username"  matInput placeholder="Digite su nombre de usuario"
+                         required>
+                        <!--<mat-hint>El nombre de usuario debe ser único</mat-hint>-->
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password :</mat-label>
+                        <input [(ngModel)]="user.password" name="password"
+                         type="password" matInput placeholder="Digite su password" 
+                         required #password = "ngModel">
+                         <div class="alert alert-danger" *ngIf= "password.invalid && password.dirty || password.touched">       
+                            <div *ngIf= "password.errors.required">
+                               <h4>Debe ingresar su password</h4>
+                            </div>                            
+                        </div>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Nombre :</mat-label>
+                        <input [(ngModel)]="user.nombre" name="nombre"
+                         matInput placeholder="Digite su nombre">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Apellido :</mat-label>
+                        <input [(ngModel)]="user.apellido" name="apellido"
+                         matInput placeholder="Digite su apellido">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Email :</mat-label>
+                        <input [(ngModel)]="user.email" name="email"
+                         type="email" matInput placeholder="Digite su email">
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Telefono :</mat-label>
+                        <input [(ngModel)]="user.telefono" name="telefono"
+                         matInput placeholder="Digite su telefono">
+                    </mat-form-field>
+
+                    <div class="container text-center">
+                        <button mat-raised-button color="accent" [disabled]= "!empleadoForm.form.valid">REGISTRAR</button>
+                        <button mat-raised-button color="primary" style="margin-left: 20px;">LIMPIAR</button>
+                    </div>
+                </form>
+            </div>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
+</div>

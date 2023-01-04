@@ -5,30 +5,50 @@ import java.util.Set;
 
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.OneToMany;
 
 @Entity
-@Table(name="Usuarios")
+@Table(name="Usuarios",uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(name = "username")
+	@NotBlank
 	private String username;
+	
+	@Column(name = "password")
+	@NotBlank
 	private String password;
+	
+	@Column(name = "nombre")
+	@NotBlank
 	private String nombre;
+	
+	@Column(name = "apellido")
+	@NotBlank
 	private String apellido;
+	
+	@Column(name = "email")
+	@NotBlank
 	private String email;
+	
+	@Column(name = "telefono")
+	@NotBlank
 	private String telefono;
 	private boolean enabled = true;
 	private String perfil;
