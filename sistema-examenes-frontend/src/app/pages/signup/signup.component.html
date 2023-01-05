@@ -13,8 +13,8 @@
                         <mat-label>Nombre de usuario :</mat-label>
                         <input  [(ngModel)]="user.username"
                          name="username"  matInput placeholder="Digite su nombre de usuario"
-                         required>
-                        <!--<mat-hint>El nombre de usuario debe ser único</mat-hint>-->
+                         required #username = "ngModel">
+                        <mat-hint>El nombre de usuario debe ser único</mat-hint>
                     </mat-form-field>
 
                     <mat-form-field class="full-width" appearance="outline">
@@ -40,7 +40,7 @@
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Apellido :</mat-label>
                         <input [(ngModel)]="user.apellido" name="apellido"
-                         matInput placeholder="Digite su apellido">
+                         matInput placeholder="Digite su apellido" required>
                     </mat-form-field>
 
                     <mat-form-field class="full-width" appearance="outline">
@@ -52,7 +52,7 @@
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Telefono :</mat-label>
                         <input [(ngModel)]="user.telefono" name="telefono"
-                         matInput placeholder="Digite su telefono">
+                         matInput placeholder="Digite su telefono" required>
                     </mat-form-field>
 
                     <div class="container text-center">
