@@ -20,6 +20,7 @@ import com.sistema.examenes.servicios.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
+//Permite el intercambio entre backend y frontend(solicitudes)
 @CrossOrigin("*")
 public class UsuarioController {
 

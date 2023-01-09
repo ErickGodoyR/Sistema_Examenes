@@ -1,0 +1,175 @@
+package com.sistema.examenes.security;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.sistema.examenes.servicios.UserDetailsServiceImpl;
+
+@EnableWebSecurity
+@Configuration
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class MySecurityConfig{
+	
+	/*
+	 private final UserDetailsService userDetailsService;
+	    
+     private final AuthEntryPointJwt unauthorizedHandler;
+ 
+     private final AuthTokenFilter authenticationJwtTokenFilter;
+	*/
+	
+	@Autowired
+	private JwtAuthenticationEntryPoint unauthorizedHandler; 
+
+	@Autowired
+	private UserDetailsServiceImpl userDetailsService;
+	
+	@Autowired
+	private JwtAuthenticationFilter jwtAuthenticationFilter;
+
+
+	 @Bean
+     public PasswordEncoder passwordEncoder() {
+         return new BCryptPasswordEncoder();
+     }
+	 
+	 /*
+	 Original
+	 @Bean
+		public PasswordEncoder passwordEncoder() {
+			//return NoOpPasswordEncoder.getInstance();
+			return new BCryptPasswordEncoder();
+		}
+	*/
+	 
+	 
+	 @Bean
+     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+         return authenticationConfiguration.getAuthenticationManager();
+     }
+	 
+	 /*
+	 original
+	 @Bean
+	    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+	        return authenticationConfiguration.getAuthenticationManager();
+	    }
+	 */
+	 
+	
+	 /*
+	Original falta ver
+	@Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+    */
+	
+		
+	/*
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+		auth.userDetailsService(this.userDetailsService).passwordEncoder(passwordEncoder());
+	}
+	*/
+	
+	 
+	 @Bean
+     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+         http.cors().and().csrf().disable()
+                  .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                 .authorizeRequests()
+                 .antMatchers("/generate-token").permitAll()
+                 .antMatchers("/usuarios/").permitAll()
+                 .antMatchers("/api/test/**").permitAll()
+                 .anyRequest().authenticated();
+ 
+         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+ 
+         return http.build();
+     }
+	 
+	 @Bean
+     public WebMvcConfigurer corsConfigurer() {
+         return new WebMvcConfigurer() {
+             @Override
+             public void addCorsMappings(CorsRegistry registry) {
+                 registry.addMapping("/**")
+                         .allowedMethods("*");
+             }
+         };
+     }
+	
+	/*
+	Original
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http
+			.csrf()
+			.disable()
+			.cors()
+			.disable()
+			.authorizeRequests()
+			.antMatchers("/generate-token").permitAll()
+			.antMatchers("/usuarios/").permitAll()
+			.antMatchers(HttpMethod.OPTIONS).permitAll()
+			.anyRequest().authenticated()
+			.and()
+			.exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
+			.and()
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+	}
+	*/
+	
+	/*
+	 @Bean
+     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+         http.cors().and().csrf().disable()
+                  .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                 .authorizeRequests()
+                 .antMatchers("/generate-token").permitAll()
+                 .antMatchers("/usuarios/").permitAll()
+                 .anyRequest().authenticated();
+ 
+         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+ 
+         return http.build();
+     }
+     */
+ 
+	 /*
+     @Bean
+     public WebMvcConfigurer corsConfigurer() {
+         return new WebMvcConfigurer() {
+             @Override
+             public void addCorsMappings(CorsRegistry registry) {
+                 registry.addMapping("/**")
+                         .allowedMethods("*");
+             }
+         };
+     }
+     */
+ 
+ }
+	

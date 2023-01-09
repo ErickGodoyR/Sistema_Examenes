@@ -1,0 +1,46 @@
+package com.sistema.examenes.security;
+
+import java.io.IOException;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import com.sistema.examenes.servicios.UserDetailsServiceImpl;
+
+import io.jsonwebtoken.ExpiredJwtException;
+
+@Component
+public class JwtAuthenticationFilter extends OncePerRequestFilter {
+
+	@Autowired
+	private UserDetailsServiceImpl userDetailsService;
+	
+	@Autowired
+	private JwtUtils jwtutils;
+	
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) {
+		String requestTokenHeader = request.getHeader("Authorization");
+		String username = null;
+		String jwtToken = null;
+	
+		if(requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
+			jwtToken = requestTokenHeader.substring(7);
+			
+			try{
+				username = this.jwtutils.extractUsername(jwtToken);
+			}catch(ExpiredJwtException expiredJwtException) {
+				System.out.println("El token ha expirado");		
+			}catch(Exception exception) {
+				
+			}
+		}
+	}
+
+}
