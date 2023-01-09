@@ -1,5 +1,10 @@
 # Sistema_Examenes
-Sistema creado utilizando Spring-Boot(Backend) y Angular(frontend).
+Sistema creado utilizando lo siguiente:
+- Spring-Boot(Backend) 
+- Angular(frontend).
+- Autenticación Jwt
+- Spring Security
+
 
 Avance 04-01
 Se crea en el frontend el menú de navegación y template utilizado para login.
