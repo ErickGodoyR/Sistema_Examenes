@@ -1,36 +1,36 @@
 <div class="bootstrap-wrapper">
-  <div class="container">
-      <div class="row" style="margin-top: 20px;">
-          <div class="col-md-6 offset-md-3">
-              <div class="container text-center">
-                  <img src="../../../assets/password.png" height="100" width="100">
-              
-
-              <h1 class="text-center">Iniciar Sesion</h1>
-
-              <form (ngSubmit)="formSubmit()">
-                  <mat-form-field class="full-width" appearance="outline">
-                      <mat-label>Nombre de usuario :</mat-label>
-                      <input  [(ngModel)]="loginData.username"
-                       name="username"  matInput placeholder="Digite su nombre de usuario"
-                       required #username = "ngModel">                      
-                  </mat-form-field>
-
-                  <mat-form-field class="full-width" appearance="outline">
-                      <mat-label>Password :</mat-label>
-                      <input [(ngModel)]="loginData.password" name="password"
-                       type="password" matInput placeholder="Digite su password" 
-                       required #password = "ngModel">
-                  </mat-form-field>
-
-                  <div class="container text-center">
-                      <button mat-raised-button color="primary">REGISTRAR</button>
-                      <button type="reset" mat-raised-button color="primary" style="margin-left: 20px;">LIMPIAR</button>
-                  </div>
-              </form>
-          </div>
-              <br><br><br>
-          </div>
-      </div>
+    <div class="container">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img src="../../../assets/password.png" height="100" width="100">
+                
+  
+                <h1 class="text-center">Iniciar Sesion</h1>
+  
+                <form (ngSubmit)="formSubmit()">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Nombre de usuario :</mat-label>
+                        <input  [(ngModel)]="loginData.username"
+                         name="username"  matInput placeholder="Digite su nombre de usuario"
+                         required #username = "ngModel">                      
+                    </mat-form-field>
+  
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Password :</mat-label>
+                        <input [(ngModel)]="loginData.password" name="password"
+                         type="password" matInput placeholder="Digite su password" 
+                         required #password = "ngModel">
+                    </mat-form-field>
+  
+                    <div class="container text-center">
+                        <button mat-raised-button color="primary">REGISTRAR</button>
+                        <button type="reset" mat-raised-button color="primary" style="margin-left: 20px;">LIMPIAR</button>
+                    </div>
+                </form>
+            </div>
+                <br><br><br>
+            </div>
+        </div>
+    </div>
   </div>
-</div>
