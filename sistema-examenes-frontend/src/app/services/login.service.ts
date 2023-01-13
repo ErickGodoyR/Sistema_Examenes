@@ -1,11 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import baserUrl from './helper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
+
+  //Evita hacer doble click para iniciar sesión
+  public loginStatusSubjec = new Subject<boolean>();
 
   constructor(private http:HttpClient) { }
 
@@ -14,10 +18,14 @@ export class LoginService {
       return this.http.post(`${baserUrl}/generate-token`,loginData);
   }
 
+  public getCurrentUser(){
+    return this.http.get(`${baserUrl}/actual-usuario`);
+  }
 
   //Inicio de sesión y establecer el token en el localstorage
   public loginUser(token:any){
       localStorage.setItem('token',token);
+      return true;
   }
 
   public isLoggedIn(){
@@ -29,14 +37,12 @@ export class LoginService {
     }
   }
 
-
   //Cerrar sesión y eliminar el token del localstorage
   public logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     return true;
   }  
-
 
   //Obtener el token
   public getToken(){
@@ -60,10 +66,6 @@ export class LoginService {
   public getUserRole(){
     let user = this.getUser();
     return user.authorities[0].authority;
-  }
-
-  public getCurrentUser(){
-    return this.http.get(`${baserUrl}/actual-usuario`);
   }
 
 
