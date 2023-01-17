@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -32,27 +31,21 @@ public class Usuario implements UserDetails {
 	private Long id;
 	
 	@Column(name = "username")
-	@NotBlank
 	private String username;
 	
 	@Column(name = "password")
-	@NotBlank
 	private String password;
 	
 	@Column(name = "nombre")
-	@NotBlank
 	private String nombre;
 	
 	@Column(name = "apellido")
-	@NotBlank
 	private String apellido;
 	
 	@Column(name = "email")
-	@NotBlank
 	private String email;
 	
 	@Column(name = "telefono")
-	@NotBlank
 	private String telefono;
 	private boolean enabled = true;
 	private String perfil;

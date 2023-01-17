@@ -1,4 +1,5 @@
-<mat-toolbar color="primary">
+<mat-toolbar
+    color="primary">
     <a [routerLink]="'/'" 
     mat-icon-button class="example-icon"
     aria-label="Example icon-button width menu icon">
@@ -31,8 +32,9 @@
     <button    
     *ngIf="login.isLoggedIn && user"
     mat-button
-    style="margin-right: 10px; color:aqua"
+    style="margin-right: 10px;"
     class="example-icon favorite-icon"
+    routerLink="/admin/profile"
     aria-label="Example icon-button width heart icon" id="signup">
     {{login.getUser().username}}
     </button>

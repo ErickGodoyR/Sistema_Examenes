@@ -1,0 +1,69 @@
+<mat-card>
+    <h1 class="text-center">Perfil de Detalles</h1>
+    <mat-card-content>
+        <div class  = "bootstrap-wrapper">
+            <div class="container">
+                <div class="text-center">
+                    <img src="../../../assets/amigo.png" height="100" width="100">
+                    <!--
+                    <mat-icon class="profile-image">
+                   <span class="material-icons-outlined">perm_identity</span>                    
+                    </mat-icon>
+                    -->
+                    <!--
+                    <img src="https://www.unmc.edu/cihc/_images/faculty/default.jpg" 
+                    alt=""
+                    class="profile-image">
+                        -->
+                    <h1 class="mt20">{{user.nombre}} {{user.apellido}}</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <table class="table text-center">
+                            <tr>
+                                <td>Nombre de Usuario</td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>ID</td>
+                                <td>{{user.id}}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>{{user.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Telefono</td>
+                                <td>{{user.telefono}}</td>
+                            </tr>
+                            <tr>
+                                <td>Rol</td>
+                                <td>{{ user.authorities[0].authority}}</td>
+                            </tr>
+                            <tr>
+                                <td>Estado</td>
+                                <td>{{ user.enabled ? "Activo" : "Deshabilitadp"}}</td>
+                            </tr>
+                            <tr>
+                        
+                            </tr>
+                            
+                        </table>
+                        <div class="container text-center">
+                            <mat-card-actions>
+                                <button mat-raised-button color="accent" id="btn-actualizar">Actualizar</button>
+                                <button mat-raised-button color="accent" id="btn-compartir">Compartir</button>
+                            </mat-card-actions>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        
+        
+    </mat-card-content>
+    
+    
+
+</mat-card>
