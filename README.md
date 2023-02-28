@@ -5,7 +5,7 @@ Sistema creado utilizando lo siguiente:
 - Autenticación Jwt
 - Spring Security
 
-Avance 28-01
+Avance 28-02
 Se realiza la sección para agregar preguntas, examen y categorías a los distintos cuestionarios. Esto se realiza utilizando el perfil de administrador. 
 
 Avance 17-01
