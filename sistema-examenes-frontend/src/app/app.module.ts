@@ -29,6 +29,17 @@ import { ProfileComponent } from './pages/profile/profile.component';
 //Importaciones para el dashboard
 import {MatListModule} from '@angular/material/list';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+import { ViewCategoriasComponent } from './pages/admin/view-categorias/view-categorias.component';
+import { AddCategoriaComponent } from './pages/admin/add-categoria/add-categoria.component';
+import { ViewExamenesComponent } from './pages/admin/view-examenes/view-examenes.component';
+import { AddExamenComponent } from './pages/admin/add-examen/add-examen.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
+import { ActualizarExamenComponent } from './pages/admin/actualizar-examen/actualizar-examen.component';
+import { ViewExamenPreguntasComponent } from './pages/admin/view-examen-preguntas/view-examen-preguntas.component';
+import { AddPreguntaComponent } from './pages/admin/add-pregunta/add-pregunta.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +52,14 @@ import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
     UserDashboardComponent,
     WelcomeComponent,
     ProfileComponent,
-    SidebarComponent
+    SidebarComponent,
+    ViewCategoriasComponent,
+    AddCategoriaComponent,
+    ViewExamenesComponent,
+    AddExamenComponent,
+    ActualizarExamenComponent,
+    ViewExamenPreguntasComponent,
+    AddPreguntaComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +74,10 @@ import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule,
+    MatSlideToggleModule,
+    MatSelectModule
   ],
   providers: [AuthInterceptorProviders],
   bootstrap: [AppComponent]

@@ -47,9 +47,10 @@ export class SignupComponent implements OnInit{
         alert('Ha ocurrido un error en el sistema');
       }
       })
+
   }
 
-
+  
 }
 
   

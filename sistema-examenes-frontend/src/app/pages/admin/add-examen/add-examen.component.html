@@ -1,0 +1,79 @@
+<mat-card>
+
+    <h1>Agregar nuevo examen</h1>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form (ngSubmit)= "guardarExamen()">
+                <mat-form-field class="w100" appearance="fill">
+                    <mat-label>Titulo</mat-label>
+                    <input
+                    [(ngModel)] = "examenData.titulo"
+                    type="text"
+                    name="titulo"
+                    placeholder="Digite su título"
+                    matInput>
+                </mat-form-field>
+
+                <mat-form-field class="w100" appearance="fill">
+                    <mat-label>Descripcion</mat-label>
+                    <textarea
+                    [(ngModel)] = "examenData.descripcion"
+                    type="text"
+                    name="descripcion"
+                    placeholder="Digite descripcion"
+                    matInput
+                    required
+                    rows="8">
+                    </textarea>
+                </mat-form-field>
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="w100" appearance="fill">
+                            <mat-label>Puntos Máximos</mat-label>
+                            <input
+                            [(ngModel)] = "examenData.puntosMaximos"
+                            type="text"
+                            name="puntosMaximos"
+                            placeholder="Digite la cantidad de puntos"
+                            matInput>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="w100" appearance="fill">
+                            <mat-label>Númeo de preguntas</mat-label>
+                            <input
+                            [(ngModel)] = "examenData.numeroDePreguntas"
+                            type="text"
+                            name="numeroDePreguntas"
+                            placeholder="Digite cantidad de preguntas"
+                            matInput>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <mat-slide-toggle class="mt20" name="activo" [(ngModel)]="examenData.activo" color="primary">
+                    Estado de publicación
+                </mat-slide-toggle>
+
+                <mat-form-field appearance="fill" class="mt20 w100">
+                    <mat-label>Categorias</mat-label>
+                    <mat-select name="categoria" [(ngModel)] = "examenData.categoria.categoriaId">
+                        <mat-option *ngFor = "let c of categorias" [value] = "c.categoriaId">{{ c.titulo }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="container text-center">
+                    <button mat-raised-button color="primary">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</mat-card>
+
+<!--Para mostrar en formato Json-->
+<!--
+{{examenData | json}}
+-->
