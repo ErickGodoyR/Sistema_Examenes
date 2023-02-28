@@ -5,16 +5,6 @@
             <div class="container">
                 <div class="text-center">
                     <img src="../../../assets/amigo.png" height="100" width="100">
-                    <!--
-                    <mat-icon class="profile-image">
-                   <span class="material-icons-outlined">perm_identity</span>                    
-                    </mat-icon>
-                    -->
-                    <!--
-                    <img src="https://www.unmc.edu/cihc/_images/faculty/default.jpg" 
-                    alt=""
-                    class="profile-image">
-                        -->
                     <h1 class="mt20">{{user.nombre}} {{user.apellido}}</h1>
                 </div>
                 <div class="row">
@@ -42,7 +32,7 @@
                             </tr>
                             <tr>
                                 <td>Estado</td>
-                                <td>{{ user.enabled ? "Activo" : "Deshabilitadp"}}</td>
+                                <td>{{ user.enabled ? "Activo" : "Deshabilitado"}}</td>
                             </tr>
                             <tr>
                         
@@ -58,12 +48,8 @@
                     </div>
                 </div>                
             </div>
-        </div>
-
-        
+        </div>     
         
     </mat-card-content>
-    
-    
 
 </mat-card>
